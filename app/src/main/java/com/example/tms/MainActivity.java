@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.item_events){
-
-
             showEventsList();
             return true;
         } else if (item.getItemId() == R.id.item_orders) {
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         eventsList.add("Event 6");
         eventFragment.updateEventsList(eventsList);
 //        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.item_events, eventFragment)
+//                .replace(R.id.fragment_container, eventFragment)
 //                .commit();
     }
 
