@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EventFragment eventFragment;
+    private OrderFragment orderFragment;
     FrameLayout fragmentContainer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             showEventsList();
             return true;
         } else if (item.getItemId() == R.id.item_orders) {
-            Toast.makeText(this, "Orders selected", Toast.LENGTH_SHORT).show();
+            showOrdersList();
             return true;
 
         }else {
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showEventsList() {
-        fragmentContainer = findViewById(R.id.fragment_container);
+        fragmentContainer = findViewById(R.id.event_fragment_container);
 
         eventFragment = new EventFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
@@ -69,9 +70,27 @@ public class MainActivity extends AppCompatActivity {
         eventsList.add("Event 5");
         eventsList.add("Event 6");
         eventFragment.updateEventsList(eventsList);
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.fragment_container, eventFragment)
-//                .commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, eventFragment)
+                .commit();
+    }
+
+    private void showOrdersList(){
+        fragmentContainer = findViewById(R.id.order_fragment_container);
+
+        orderFragment = new OrderFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, orderFragment).commit();
+        List<String> ordersList = new ArrayList<>();
+        ordersList.add("Order 1");
+        ordersList.add("Order 2");
+        ordersList.add("Order 3");
+        ordersList.add("Order 4");
+        ordersList.add("Order 5");
+        ordersList.add("Order 6");
+        orderFragment.updateOrdersList(ordersList);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, orderFragment)
+                .commit();
     }
 
 }
