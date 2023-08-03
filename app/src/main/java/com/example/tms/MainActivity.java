@@ -2,9 +2,11 @@ package com.example.tms;
 import com.example.tms.R;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,13 +16,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private EventFragment eventFragment;
+    FrameLayout fragmentContainer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setSupportActionBar(findViewById(R.id.my_toolbar));
 
 
@@ -34,19 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.item_events:
-//                Toast.makeText(this, "Events selected", Toast.LENGTH_SHORT).show();
-//                return true;
-//            case R.id.item_orders:
-//                Toast.makeText(this, "Orders selected", Toast.LENGTH_SHORT).show();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
+
         if (item.getItemId() == R.id.item_events){
-            Toast.makeText(this, "Events selected", Toast.LENGTH_SHORT).show();
-                return true;
+
+
+            showEventsList();
+            return true;
         } else if (item.getItemId() == R.id.item_orders) {
             Toast.makeText(this, "Orders selected", Toast.LENGTH_SHORT).show();
             return true;
@@ -55,6 +56,24 @@ public class MainActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void showEventsList() {
+        fragmentContainer = findViewById(R.id.fragment_container);
+
+        eventFragment = new EventFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
+        List<String> eventsList = new ArrayList<>();
+        eventsList.add("Event 1");
+        eventsList.add("Event 2");
+        eventsList.add("Event 3");
+        eventsList.add("Event 4");
+        eventsList.add("Event 5");
+        eventsList.add("Event 6");
+        eventFragment.updateEventsList(eventsList);
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.item_events, eventFragment)
+//                .commit();
     }
 
 }
