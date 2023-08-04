@@ -119,21 +119,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void getEvents(){
         Call<List<Event>> call = RetrofitClient.getInstance().getMyApi().getAllEvents();
         call.enqueue(new Callback<List<Event>>() {
             @Override
             public void onResponse(@NonNull Call<List<Event>> call, @NonNull Response<List<Event>> response) {
-//                eventFragment = new EventFragment();
-//                fragmentContainer = findViewById(R.id.event_fragment_container);
-//                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
-//                List<Event> myEventList = response.body();
-//                eventFragment.updateEventsList(myEventList);
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, eventFragment)
-//                        .commit();
+                eventFragment = new EventFragment();
+                fragmentContainer = findViewById(R.id.event_fragment_container);
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
+                List<Event> myEventList = response.body();
+                eventFragment.updateEventsList(myEventList);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, eventFragment)
+                        .commit();
                 if(response.isSuccessful()){
-                    List<Event> myEventList = response.body();
                     eventFragment.updateEventsList(myEventList);
                 }
                 else{
