@@ -8,13 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tms.model.Event;
+
 import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
-    List<String> eventsList;
+    List<Event> eventsList;
     int itemSpacing;
 
-    public EventAdapter(List<String> eventsList, int itemSpacing) {
+    public EventAdapter(List<Event> eventsList, int itemSpacing) {
         this.eventsList = eventsList;
         this.itemSpacing = itemSpacing;
     }
@@ -29,8 +31,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-        String event = eventsList.get(position);
-        holder.eventTextView.setText(event);
+        Event event = eventsList.get(position);
+        holder.eventIdText.setText(String.valueOf(event.getEventId()));
+        holder.eventNameText.setText(event.getEventName());
+        holder.eventDescriptionText.setText(event.getEventDescription());
+        holder.eventTypeText.setText(event.getEventType());
+        holder.eventVenueText.setText(event.getVenue());
     }
 
     @Override
@@ -39,11 +45,21 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     }
 
     public static class EventViewHolder extends RecyclerView.ViewHolder{
-        TextView eventTextView;
+
+        TextView eventIdText;
+        TextView eventNameText;
+        TextView eventDescriptionText;
+        TextView eventTypeText;
+        TextView eventVenueText;
+
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
-            eventTextView = itemView.findViewById(R.id.nameTextView);
+            eventIdText = itemView.findViewById(R.id.event_id_text);
+            eventNameText = itemView.findViewById(R.id.event_name_text);
+            eventDescriptionText = itemView.findViewById(R.id.event_description_text);
+            eventTypeText = itemView.findViewById(R.id.event_type_text);
+            eventVenueText = itemView.findViewById(R.id.event_venue_text);
         }
     }
 }

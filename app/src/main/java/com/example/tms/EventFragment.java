@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tms.model.Event;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventFragment extends Fragment {
 
-    private List<String> eventsList = new ArrayList<>();
+    private List<Event> eventsList = new ArrayList<>();
+
 
 
     @Nullable
@@ -32,7 +35,7 @@ public class EventFragment extends Fragment {
         recyclerView.setAdapter(eventAdapter);
         return view;
     }
-    public void updateEventsList(List<String> events) {
+    public void updateEventsList(List<Event> events) {
         eventsList.clear();
         eventsList.addAll(events);
 
