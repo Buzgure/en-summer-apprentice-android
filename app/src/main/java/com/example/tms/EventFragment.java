@@ -24,9 +24,11 @@ public class EventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.events_fragment, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.event_recycle_view);
+        int spacingInPixels = getResources().getDimensionPixelOffset(R.dimen.item_spacing);
+        recyclerView.addItemDecoration(new SpaceItemDecorator(spacingInPixels));
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        EventAdapter eventAdapter = new EventAdapter(eventsList);
+        EventAdapter eventAdapter = new EventAdapter(eventsList, spacingInPixels);
         recyclerView.setAdapter(eventAdapter);
         return view;
     }

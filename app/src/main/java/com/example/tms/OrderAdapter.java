@@ -12,9 +12,11 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
     List<String> ordersList;
+    int itemSpacing;
 
-    public OrderAdapter( List<String> ordersList) {
+    public OrderAdapter( List<String> ordersList, int itemSpacing) {
         this.ordersList = ordersList;
+        this.itemSpacing = itemSpacing;
     }
 
     @NonNull

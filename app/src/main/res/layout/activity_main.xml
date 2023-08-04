@@ -26,6 +26,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+<!--    <include-->
+<!--        layout="@layout/title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/bar"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <ViewStub
+        android:id="@+id/title_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout="@layout/title"
+
+        >
+
+
+    </ViewStub>
+
     <include
         android:id="@+id/fragment_container"
         layout="@layout/events_fragment"
@@ -38,8 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bar"
         app:layout_constraintVertical_bias="1.0"
-        layout/>
-    <include layout="@layout/orders_fragment"/>
+        />
 
     <include
         android:id="@+id/fragment_container"

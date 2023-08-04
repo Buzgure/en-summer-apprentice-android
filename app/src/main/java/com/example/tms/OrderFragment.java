@@ -22,9 +22,11 @@ public class OrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.orders_fragment, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.order_recycle_view);
+        int spacingInPixels = getResources().getDimensionPixelOffset(R.dimen.item_spacing);
+        recyclerView.addItemDecoration(new SpaceItemDecorator(spacingInPixels));
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        OrderAdapter orderAdapter = new OrderAdapter(ordersList);
+        OrderAdapter orderAdapter = new OrderAdapter(ordersList, spacingInPixels);
         recyclerView.setAdapter(orderAdapter);
         return view;
     }

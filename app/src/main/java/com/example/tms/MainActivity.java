@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private EventFragment eventFragment;
     private OrderFragment orderFragment;
+    private ViewStub titleSubEvent;
+    private ViewStub titleSubOrder;
+    private ViewStub titleSub;
+    TextView textView;
+
     FrameLayout fragmentContainer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setSupportActionBar(findViewById(R.id.my_toolbar));
-
+        titleSub = findViewById(R.id.title_sub);
+        View inflatedView = titleSub.inflate();
+        textView = inflatedView.findViewById(R.id.title_template);
 
     }
 
@@ -45,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.item_events){
+            textView.setText("Events");
             showEventsList();
             return true;
+
         } else if (item.getItemId() == R.id.item_orders) {
+            textView.setText("Orders");
             showOrdersList();
             return true;
 
@@ -58,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showEventsList() {
-        fragmentContainer = findViewById(R.id.event_fragment_container);
 
+
+        fragmentContainer = findViewById(R.id.event_fragment_container);
         eventFragment = new EventFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
         List<String> eventsList = new ArrayList<>();
@@ -76,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showOrdersList(){
+
+
+
         fragmentContainer = findViewById(R.id.order_fragment_container);
 
         orderFragment = new OrderFragment();
