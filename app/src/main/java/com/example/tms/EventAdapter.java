@@ -34,7 +34,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         Event event = eventsList.get(position);
         holder.eventIdText.setText(String.valueOf(event.getEventId()));
         holder.eventNameText.setText(event.getEventName());
-        holder.eventDescriptionText.setText(event.getEventDescription());
+//        holder.eventDescriptionText.setText(event.getEventDescription());
         holder.eventTypeText.setText(event.getEventType());
         holder.eventVenueText.setText(event.getVenue());
     }
@@ -48,7 +48,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         TextView eventIdText;
         TextView eventNameText;
-        TextView eventDescriptionText;
+//        TextView eventDescriptionText;
         TextView eventTypeText;
         TextView eventVenueText;
 
@@ -57,7 +57,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             super(itemView);
             eventIdText = itemView.findViewById(R.id.event_id_text);
             eventNameText = itemView.findViewById(R.id.event_name_text);
-            eventDescriptionText = itemView.findViewById(R.id.event_description_text);
+//            eventDescriptionText = itemView.findViewById(R.id.event_description_text);
             eventTypeText = itemView.findViewById(R.id.event_type_text);
             eventVenueText = itemView.findViewById(R.id.event_venue_text);
         }
