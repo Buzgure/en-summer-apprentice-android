@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (item.getItemId() == R.id.item_orders) {
             textView.setText("Orders");
+            setDynamicLayout(R.layout.orders_fragment);
             showOrdersList();
             return true;
 
@@ -80,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showEventsList() {
 
-
+        setDynamicLayout(R.layout.events_fragment);
         fragmentContainer = findViewById(R.id.event_fragment_container);
         eventFragment = new EventFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, eventFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, eventFragment).commit();
 //        List<String> eventsList = new ArrayList<>();
 //        eventsList.add("Event 1");
 //        eventsList.add("Event 2");
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentContainer = findViewById(R.id.order_fragment_container);
 
         orderFragment = new OrderFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, orderFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, orderFragment).commit();
         List<String> ordersList = new ArrayList<>();
         ordersList.add("Order 1");
         ordersList.add("Order 2");
@@ -152,21 +153,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    private void setDynamicLayout(int layoutResId) {
-//        View newLayout = getLayoutInflater().inflate(layoutResId, null);
-//
-//        View existingView = findViewById(R.id.item_to_replace);
-//
-//        if (existingView != null && newLayout != null) {
-//            ViewGroup parent = (ViewGroup) existingView.getParent();
-//
-//            if (parent != null) {
-//                int index = parent.indexOfChild(existingView);
-//                parent.removeView(existingView);
-//                parent.addView(newLayout, index);
-//                newLayout.setId(R.id.item_to_replace);
-//            }
-//        }
-//    }
+    private void setDynamicLayout(int layoutResId) {
+        View newLayout = getLayoutInflater().inflate(layoutResId, null);
+
+        View existingView = findViewById(R.id.fragment_container);
+
+        if (existingView != null && newLayout != null) {
+            ViewGroup parent = (ViewGroup) existingView.getParent();
+
+            if (parent != null) {
+                int index = parent.indexOfChild(existingView);
+                parent.removeView(existingView);
+                parent.addView(newLayout, index);
+                newLayout.setId(R.id.fragment_container);
+            }
+        }
+    }
 }
 
