@@ -1,6 +1,7 @@
 package com.example.tms;
 import com.example.tms.R;
 import com.example.tms.model.Event;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -50,24 +51,15 @@ public class MainActivity extends AppCompatActivity {
         titleSub = findViewById(R.id.title_sub);
         View inflatedView = titleSub.inflate();
         textView = inflatedView.findViewById(R.id.title_template);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavbar);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.pages_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (item.getItemId() == R.id.item_events){
+        if (item.getItemId() == R.id.menu_events){
             textView.setText("Events");
             showEventsList();
             return true;
 
-        } else if (item.getItemId() == R.id.item_orders) {
+        } else if (item.getItemId() == R.id.menu_orders) {
             textView.setText("Orders");
             setDynamicLayout(R.layout.orders_fragment);
             showOrdersList();
@@ -76,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         }else {
             return super.onOptionsItemSelected(item);
         }
+
+    });
 
     }
 
