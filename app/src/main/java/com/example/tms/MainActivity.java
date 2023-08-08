@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -149,5 +150,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
+//    private void setDynamicLayout(int layoutResId) {
+//        View newLayout = getLayoutInflater().inflate(layoutResId, null);
+//
+//        View existingView = findViewById(R.id.item_to_replace);
+//
+//        if (existingView != null && newLayout != null) {
+//            ViewGroup parent = (ViewGroup) existingView.getParent();
+//
+//            if (parent != null) {
+//                int index = parent.indexOfChild(existingView);
+//                parent.removeView(existingView);
+//                parent.addView(newLayout, index);
+//                newLayout.setId(R.id.item_to_replace);
+//            }
+//        }
+//    }
 }
 
